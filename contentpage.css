@@ -1,0 +1,17 @@
+.circular_button{
+    height : 50px;
+    width : 50px;
+    border-radius : 50%;
+}
+#recording_button{
+    background-color: red;
+}
+.hidden{
+    visibility: hidden;
+}
+#background_element{
+    height: 123px;
+    width: 60px;
+    background-color: rgb(92, 89, 89);
+    border-radius: 50px;
+}

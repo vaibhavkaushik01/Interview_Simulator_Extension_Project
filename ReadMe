@@ -1,0 +1,35 @@
+Chrome Extension for Interview Simulation using llm models
+
+Functionalities :-
+1. An icon will show on leetcode when we click on a question to solve.
+2. Extension should have access to problem statement(context) and users code.
+3. Once clicked Extension will ask to read (it will give some time to read) and ask relevant questions.
+4. After that it will ask user his approach to solve.
+5. Once user tell a approach it will ask user to code the approach and check whether its correct or not.
+6. If not correct it can give clues to user.
+7. If the ans is correct it will ask for optimizations if present in that question.
+8. Finally feedback to user is provided by this extension.
+
+How will i handle :-
+1. Getting users openAI key
+2. Speech to text and text to speech
+3. Call to openAI api
+
+Components :-
+1. popup html :- 
+  > Ask for Open AI key from user.
+  > If key is provided store it on local browser of user.
+  > Show a turn on and off button.
+
+2. Permissions :-
+  > Declared in manifest.json to specify what your extension can access, such as:
+  >"activeTab" – interact with the current tab
+  >"storage" – save user preferences
+  >"microphone" – for voice input
+  >"scripting" – for injecting scripts
+
+2. Content Script :-
+  >
+
+Steps:
+1. Build a UI for popup (popup.html and popup_enter_key.html) and icon to show on website(content script).

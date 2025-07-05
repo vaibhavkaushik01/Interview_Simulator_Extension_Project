@@ -1,0 +1,26 @@
+{
+    "manifest_version" : 3,
+    "name" : "Interview Simulator",
+    "version" : "1.0",
+    "description" : "Act as an interviewer while solving coding question on coding platforms",
+    "icons": {
+        "16" : "./Image/icon.png",
+        "32": "./Image/icon.png",
+        "48": "./Image/icon.png",
+        "128": "./Image/icon.png"
+    },
+    "permissions": ["storage", "activeTab", "scripting"],
+    "action":{
+       "default_popup" : "popup_enter_key.html"
+    },
+    "content_scripts": [
+    {
+      "matches": ["https://leetcode.com/problems/*"],
+      "css": ["contentpage.css"],
+      "js": ["content_script.js"]
+    }
+  ],
+  "background":{
+    "service_worker":"background_script.js"
+  }
+}
