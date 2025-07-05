@@ -1,4 +1,4 @@
-Chrome Extension for Interview Simulation using llm models
+Chrome Extension for Interview Simulation using llm model
 
 Functionalities :-
 1. An icon will show on leetcode when we click on a question to solve.
@@ -10,14 +10,16 @@ Functionalities :-
 7. If the ans is correct it will ask for optimizations if present in that question.
 8. Finally feedback to user is provided by this extension.
 
-How will i handle :-
-1. Getting users openAI key
-2. Speech to text and text to speech
-3. Call to openAI api
+Functionalities :-
+1. Demo mode(with my api key)
+2. Normal mode(user will have to provide their api key generated from google ai studio)
+2. Speech to text and text to speech(handled using webspeech api)
+3. Call to gemini api for llm response
 
 Components :-
 1. popup html :- 
-  > Ask for Open AI key from user.
+  > Ask for Open AI key from user(for normal mode).
+  >Will give access for one usecase(in demo mode).
   > If key is provided store it on local browser of user.
   > Show a turn on and off button.
 
@@ -25,11 +27,26 @@ Components :-
   > Declared in manifest.json to specify what your extension can access, such as:
   >"activeTab" – interact with the current tab
   >"storage" – save user preferences
-  >"microphone" – for voice input
   >"scripting" – for injecting scripts
 
-2. Content Script :-
-  >
+3. Content Script :-
+  >Inject UI overlays or floating widgets
+  >Read code from code editors
+  >Modify elements
 
-Steps:
-1. Build a UI for popup (popup.html and popup_enter_key.html) and icon to show on website(content script).
+.....
+
+
+Working of extension: 
+> when injected icon on bottom of page is clicked problem description is sent from content script to background script which then call server sending a prompt and getting llm response from server.
+
+> This response is then sent back to content script which have access to window object and webspeech api is used to utter this in content script.(response is a greeting and some problem desciption along with asking user's approach to question).
+
+> User can then click the record button and record his response and click record button again to end recording. This response is then converted to text using webspeech api and sent to background script.
+
+> background script again form a prompt along with user code, user interaction and conversation history and call server for response and the response is sent back to content script where it is uttered.
+
+Working of server:
+> Server just has access to api key and call gemini through sdk and return reponse to background_script.
+
+
