@@ -59,7 +59,7 @@ problem_details.description = des.content;
 
 function getUserCode(){
     const checkEditor = setInterval(() => {
-        const codeeditor = document.querySelector("#editor > div.flex.flex-1.flex-col.overflow-hidden.pb-2 > div.flex-1.overflow-hidden > div > div > div.overflow-guard > div.monaco-scrollable-element.editor-scrollable.vs-dark > div.lines-content.monaco-editor-background");
+        const codeeditor = document.querySelector("#editor > div.flex.flex-1.flex-col.overflow-hidden.pb-2 > div.flex-1.overflow-hidden > div > div > div.overflow-guard > div.monaco-scrollable-element.editor-scrollable.vs-dark > div.lines-content.monaco-editor-background > div.view-lines.monaco-mouse-cursor-text");
 
         if (codeeditor) {
             console.log("Code editor found:", codeeditor.textContent);
@@ -137,9 +137,8 @@ if(!speechRecognition){
         console.log("recognition ended");
         chrome.runtime.sendMessage({action : "sending_user_interaction_with_code", data : {code : userCode,userReply : userinteraction}},(response)=>{
             //response will contain model reply to user query or data utter this here if received data
-            console.log(response);
             utter_this_sentence(response);
-            console.log("background script responded : "+response);
+            //console.log("background script responded : "+response);
         });
     }
     });

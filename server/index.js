@@ -2,19 +2,21 @@ import express from "express";
 import cors from "cors";
 import { GoogleGenAI} from "@google/genai";
 import bodyParser from "body-parser";
+import dotenv from "dotenv";
 
+dotenv.config();
 const API_KEY = process.env.API_KEY;
 
 const app = express();
 const port = 3000;
 const allowedOrigins = [
-    "chrome-extension://djgcgkjddomjmfplhiacobjjjgikojjd",
-    "http://localhost:3000"
+    '*',
+    'chrome-extension://djgcgkjddomjmfplhiacobjjjgikojjd/',
+    'http://localhost:3000'
 ];
 app.use(cors({
-    origin : allowedOrigins,
+    origin : '*',
     methods : ['GET','POST','PUT','DELETE'],
-    credentials : true
 }));
 app.use(bodyParser.text({extended : true}));
 
